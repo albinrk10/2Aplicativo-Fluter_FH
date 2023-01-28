@@ -10,9 +10,20 @@ class AppTheme {
       //AppBar Theme
       appBarTheme: const AppBarTheme(color: primary, elevation: 0),
       textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-        foregroundColor: primary,
-      )));
+          style: TextButton.styleFrom(foregroundColor: primary)),
+      //FloatingActionButtons
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: primary,
+        elevation: 5,
+      ),
+      //ElevatedButtons
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.indigo,
+          shape: const StadiumBorder(),
+          elevation: 100,
+        ),
+      ));
 
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
     //color primario
@@ -22,5 +33,9 @@ class AppTheme {
     appBarTheme: const AppBarTheme(color: primary, elevation: 0),
 
     //scaffoldBackgroundColor: Colors.black
+
+    //TextButton Theme
+    textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(foregroundColor: primary)),
   );
 }
