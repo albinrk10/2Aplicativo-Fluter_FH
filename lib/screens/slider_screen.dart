@@ -2,7 +2,6 @@ import 'package:albin_proyec_ulti/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class SliderScreen extends StatefulWidget {
-   
   const SliderScreen({Key? key}) : super(key: key);
 
   @override
@@ -10,39 +9,62 @@ class SliderScreen extends StatefulWidget {
 }
 
 class _SliderScreenState extends State<SliderScreen> {
-  double _sliderValue=100;
+  double _sliderValue = 100;
+  bool _sliderEnabled = true;
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(
-        title:const Text('Appbar')
-      ),
-      body:Column(
+    return Scaffold(
+      appBar: AppBar(title: const Text('Appbar')),
+      body: Column(
         children: [
           Slider.adaptive(
-            min:50 ,
-            max:400 ,
+              min: 50,
+              max: 400,
+              activeColor: AppTheme.primary,
+              value: _sliderValue,
+              onChanged: _sliderEnabled
+                  ? (value) {
+                      _sliderValue = value;
+                      setState(() {});
+                    }
+                  : null),
+          // Checkbox(
+          //     value: _sliderEnabled,
+          //     onChanged: (value) {
+          //       _sliderEnabled = value ?? true;
+          //       setState(() {});
+          //     }),
+                  // Switch(
+                  //   value: _sliderEnabled,
+                  //    onChanged: (value) => setState(() {
+                  //   _sliderEnabled = value ;
+                  // })),
+          CheckboxListTile(
+              activeColor: AppTheme.primary,
+              title: const Text('Habilitar Slider'),
+              value: _sliderEnabled,
+              onChanged: (value) => setState(() {
+                    _sliderEnabled = value ?? true;
+                  })),
+          SwitchListTile.adaptive(
             activeColor: AppTheme.primary,
-            
-            value: _sliderValue,
-      
-            onChanged: (value){
-           _sliderValue =value;
-           setState(() {
-             
-           });
-            }
-            ),
-            SingleChildScrollView(
+              title: const Text('Habilitar Slider'),
+              value: _sliderEnabled,
+              onChanged: (value) => setState(() {
+                    _sliderEnabled = value ?? true;
+                  })),
+           const AboutListTile(   )  ,    
+          Expanded(
+            child: SingleChildScrollView(
               child: Image(
-                image: NetworkImage(
-                'https://lanthorn.com/wp-content/uploads/2022/01/spider-mannowayhome_lob_crd_02_0.jpg'),
-              fit: BoxFit.contain,
-              width:_sliderValue,
+                image: const NetworkImage(
+                    'https://cdn.pixabay.com/photo/2020/07/06/17/51/batman-5377804_1280.png'),
+                fit: BoxFit.contain,
+                width: _sliderValue,
               ),
             ),
-            
+          ),
         ],
       ),
     );
