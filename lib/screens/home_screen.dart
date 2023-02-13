@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('componentes en Flutter'),
+          title: const Text('componentes en Flutter Albin'),
           //elevation: 0,
         ),
         body: ListView.separated(
